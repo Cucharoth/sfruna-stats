@@ -24,7 +24,7 @@ ON CONFLICT DO NOTHING;
 
 INSERT INTO stats.noticia (noticia_id, titulo_noticia, content_noticia)
 VALUES
-(1, 'Chris Metzen returns to build WoW ''s '' next generation of adventures ''',	'Before he retired from Blizzard in 2016, Metzen worked on every Warcraft game, helping to build the story and lore. He eventually became Blizzard'' s senior vice president of story
+(1, 'Chris Metzen returns to build WoWs next generation of adventures','Before he retired from Blizzard in 2016, Metzen worked on every Warcraft game, helping to build the story and lore. He eventually became Blizzard'' s senior vice president of story
 and franchise development
 and was involved in all of the studio ''s projects'),
 (2,	'Datatmined Mythic+ Tuning 10.2 PTR - Black Rook Hold Buffs', 'In yesterday''s 10.2 PTR build,
