@@ -37,6 +37,6 @@ public class UserAchv {
     @Column(name = "completado", nullable = true, columnDefinition = "BOOLEAN")
     private boolean completed;
 
-    @Column(name = "tiempo_jugado", nullable = true, columnDefinition = "TIMESTAMP")
+    @Column(name = "fecha_completado", nullable = true, columnDefinition = "TIMESTAMP")
     private Timestamp date;
 }

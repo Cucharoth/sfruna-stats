@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         authRequest -> {
                             authRequest.requestMatchers("/css/**", "/img/**", "/js/**", "/favicon.ico").permitAll();
-                            authRequest.requestMatchers("/new-user/**").permitAll();
+                            authRequest.requestMatchers("/new-user/**", "/**").permitAll();
                             // authRequest.requestMatchers("/index-login/**").hasRole("USER");
                             authRequest.anyRequest().authenticated();
                         })
