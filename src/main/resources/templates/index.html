@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:hx="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>sFruna</title>
+    <!-- 2023 - Cucharoth | Prog. Avanzada - sFruna Stats -->
+    <link rel="shortcut icon" type="image/png" th:href="@{/favicon.ico}">
+    <link rel="stylesheet" href="/src/main/resources/static/css/stats.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/header-stats.css">
+    <link rel="stylesheet" th:href="@{/css/index-header-style.css}">
+
 </head>
 <body>
-    hello worldto
+    <header>
+        <div class="header-content">
+            <div class="header-logo-div">
+                <div class="header-logo">SteamFruna</div>
+            </div>
+            <nav class="header-nav">
+                <button class="home-button primary-button">home</button>
+                <button class="library-button primary-button">library</button>
+                <button class="friends-button primary-button">friends</button>
+                <button class="logout-button primary-button">logout</button>
+            </nav>
+            <div class="header-account-div">
+                <div class="profile-img-div">
+                    <img src="" alt="prfl-img">
+                </div>
+                <div class="header-username">username</div>
+            </div>
+        </div>
+    </header>
+    <div>test</div>
 </body>
 </html>
