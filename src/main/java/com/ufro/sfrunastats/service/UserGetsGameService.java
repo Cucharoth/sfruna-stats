@@ -70,8 +70,8 @@ public class UserGetsGameService {
      * @return Lista con el resultado del Query realizado.
      * 
      */
-    public int getCantidadJuegosByUserId(int userId) {
-        return userGetsGameRepository.getCantidadJuegosByUserId(userId);
+    public int getCantidadBuysByUserId(int userId) {
+        return userGetsGameRepository.getCantidadBuysByUserId(userId);
     }
 
     public List<String> getUserWithTheMostBuys() {

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:hx="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stats</title>
+</head>
+
+<body>
+    <!-- header -->
+    <header th:fragment="header">
+        <div class="header-content">
+            <div class="header-logo-div">
+                <a th:href="@{/}" class="header-logo">SteamFruna</a>
+            </div>
+            <nav class="header-nav">
+                <div th:if="${onIndex}">
+                    <a th:href="@{/}" class="home-button accent-button">home</a>
+                </div>
+                <div th:unless="${onIndex}">
+                    <a th:href="@{/}" class="home-button primary-button">home</a>
+                </div>
+                <a th:href="@{/}" class="library-button primary-button">library</a>
+                <div th:if="${onProfile}">
+                    <a th:href="@{/profile}" class="friends-button accent-button">perfil</a>
+                </div>
+                <div th:unless="${onProfile}">
+                    <a th:href="@{/profile}" class="friends-button primary-button">perfil</a>
+                </div>
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" value="Sign Out" class="logout-button primary-button">logout</button>
+                </form>
+            </nav>
+            <div class="header-account-div">
+                <div class="profile-img-div">
+                    <img th:src="@{${user.profileImg.link}}" alt="prfl-img" class="header-prfl-img">
+                </div>
+                <div th:text="${user.username}" class="header-username">username</div>
+            </div>
+        </div>
+    </header>
+</body>
+
+</html>

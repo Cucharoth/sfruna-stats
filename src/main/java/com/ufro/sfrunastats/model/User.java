@@ -41,6 +41,10 @@ public class User implements UserDetails{
     @Column(name = "role", nullable = true)
     private Role role;
 
+    @ManyToOne
+    @JoinColumn(name = "imagen_perfil_id", nullable = false)
+    private ProfileImg profileImg;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority((role.name())));

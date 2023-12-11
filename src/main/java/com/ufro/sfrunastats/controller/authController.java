@@ -16,9 +16,8 @@ import com.ufro.sfrunastats.service.UserService;
 import lombok.AllArgsConstructor;
 
 @Controller
-@RequestMapping
 @AllArgsConstructor
-public class authController {
+public class AuthController {
 
     private final UserService userService;
 

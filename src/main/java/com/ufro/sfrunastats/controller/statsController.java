@@ -19,7 +19,7 @@ import lombok.AllArgsConstructor;
 @Controller
 @RequestMapping
 @AllArgsConstructor
-public class statsController {
+public class StatsController {
 
     private final UserService userService;
     private final StatsService statsService;
@@ -27,7 +27,7 @@ public class statsController {
     private final UserGetsGameService userGetsGame;
     private final UserNewsService userNewsService;
 
-    @GetMapping(path = "/")
+    @GetMapping(path = "/stats")
     public String index(Model model, Principal principal) {
         User user = new User();
 
@@ -36,6 +36,7 @@ public class statsController {
             user = userService.findByUsername(principal.getName());
         }
 
+        // system:
         // System.out.println(statsService.getUserWithTheMostAchvPoints());
         
         // todo: TEST THIS!
@@ -66,6 +67,9 @@ public class statsController {
         // System.out.println(userNewsService.getNoticiasMasPopularesThisMonth().toString());
 
         // System.out.println(userService.comparaStats(user.getId(), 2).toString());
+
+        // user:
+        // getPuntosLogroByUserId()
         return "index";
     }
 }

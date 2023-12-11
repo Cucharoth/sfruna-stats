@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sFruna</title>
+    <title>sFruna | Profile</title>
     <!-- 2023 - Cucharoth | Prog. Avanzada - sFruna Stats -->
     <link rel="shortcut icon" type="image/png" th:href="@{/favicon.ico}">
     <link rel="stylesheet" href="/src/main/resources/static/css/stats.css">
@@ -17,16 +17,29 @@
     <link rel="stylesheet" th:href="@{/css/body-stats.css}">
 
 </head>
+
 <body>
     <!-- header -->
     <header th:replace="~{fragments/stats.html :: header}"></header>
-    
+
     <main class="main">
         <div class="main-div">
+            <div class="profile-user-div">
+                <div class="profile-img-div">
+                    <img th:src="@{${user.profileImg.link}}" alt="prfl-img" class="profile-user-img">
+                </div>
+                <div class="profile-info">
+                    <div th:text="${user.username}" class="profile-info-username">
+                        username
+                    </div>
+                </div>
+            </div>
+
             <div class="content-navbar-div">
                 <nav class="content-navbar">
-                    <button class="primary-button content-header-nav-btn">juegos mas jugados</button>
-                    <button class="primary-button content-header-nav-btn">usuarios con mas juegos</button>
+                    <button class="accent-button content-header-nav-btn">stats</button>
+                    <button class="primary-button content-header-nav-btn">achievement</button>
+                    <button class="primary-button content-header-nav-btn">configuration</button>
                 </nav>
             </div>
             <div class="content-div">
@@ -36,24 +49,20 @@
                 <div class="content">
                     <table class="content-stats-table">
                         <tr class="table-header">
-                            <th class="table-cell">Company</th>
-                            <th class="table-cell">Contact</th>
-                            <th class="table-cell">Country</th>
+                            <th class="table-cell">Category</th>
+                            <th class="table-cell">Stat</th>
                         </tr>
-                        <tr class="table-content">
-                            <td class="table-cell">Alfreds Futterkiste</td>
-                            <td class="table-cell">Maria Anders</td>
-                            <td class="table-cell">Germany</td>
-                        </tr>
-                        <tr class="table-content">
-                            <td class="table-cell">Centro comercial Moctezuma</td>
-                            <td class="table-cell">Francisco Chang</td>
-                            <td class="table-cell">Mexico</td>
-                        </tr>
+                        <div th:each="stat : ${stats}">
+                            <tr class="table-content">
+                                <td th:text="${stat[0]}" class="table-cell">cell data</td>
+                                <td th:text="${stat[1]}" class="table-cell-center">cell data</td>
+                            </tr>
+                        </div>
                     </table>
                 </div>
             </div>
         </div>
     </main>
 </body>
+
 </html>

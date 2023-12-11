@@ -39,7 +39,7 @@ public interface UserGetsGameRepository extends CrudRepository<UserGetsGame, Int
             "WHERE usuario_id = ?1 " +
             "GROUP BY nombre_usuario " +
             "ORDER BY compras_realizadas DESC;", nativeQuery = true)
-    int getCantidadJuegosByUserId(int userId);
+    int getCantidadBuysByUserId(int userId);
 
     @Query(value = "SELECT nombre_usuario, COUNT(*) AS compras\r\n" + //
             "FROM stats.usuario_adquiere_juego\r\n" + //

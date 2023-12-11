@@ -36,6 +36,7 @@ public class SecurityConfig {
                             authRequest.anyRequest().authenticated();
                         })
                 .formLogin((form) -> form
+                        .defaultSuccessUrl("/", true)
                         .permitAll())
                 .logout((logout) -> logout
                         .permitAll())

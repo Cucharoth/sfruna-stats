@@ -1,8 +1,13 @@
 
-INSERT INTO stats.usuario (usuario_id, nombre_usuario, password_usuario, role) 
+INSERT INTO stats.imagen_perfil (imagen_id, link)
 VALUES
-(1, 'Cucharoth','$2a$10$ugBH4mQJVitDDj3tohQ8RO5gsXCLPVufBPEvvuywRYvTA50nkVO7G', 'ADMIN'),
-(2, 'Belen','$2a$10$pLxXxWwFtdt087OfqglnbuVWZqYG/ddWkEAUt4Up6G5UJLkr45Kwi', 'ADMIN')
+(1, 'https://imgur.com/UZSNN9v.png')
+ON CONFLICT DO NOTHING;
+
+INSERT INTO stats.usuario (usuario_id, nombre_usuario, password_usuario, role, imagen_perfil_id) 
+VALUES
+(1, 'Cucharoth','$2a$10$ugBH4mQJVitDDj3tohQ8RO5gsXCLPVufBPEvvuywRYvTA50nkVO7G', 'ADMIN',1),
+(2, 'Belen','$2a$10$pLxXxWwFtdt087OfqglnbuVWZqYG/ddWkEAUt4Up6G5UJLkr45Kwi', 'ADMIN',1)
 ON CONFLICT DO NOTHING;
 
 INSERT INTO stats.juego (juego_id, nombre_juego)

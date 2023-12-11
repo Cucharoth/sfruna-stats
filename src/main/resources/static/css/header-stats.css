@@ -12,6 +12,14 @@
     --primary-font: 'Nova Square', sans-serif;
 }
 
+.bg-1 {
+    background-color: var(--accent-color);
+}
+
+.bg-2 {
+    background-color: var(--alert-color);
+}
+
 .header-content {
     flex: 1;
     display: flex;
@@ -23,7 +31,7 @@
     flex: 1;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
 }
 
 .header-nav {
@@ -48,9 +56,23 @@
     margin-left: 10px;
 }
 
+.profile-img-div {
+    display: flex;
+    justify-content: right !important;
+}
+
+.header-prfl-img {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+}
+
 .header-logo {
     color: var(--text-color);
     font-size: 35px;
     font-weight: bold;
     font-family: var(--primary-font);
+    justify-content: start;
+    padding-left: 5px;
 }
