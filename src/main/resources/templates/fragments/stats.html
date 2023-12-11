@@ -25,10 +25,10 @@
                 </div>
                 <a th:href="@{/}" class="library-button primary-button">library</a>
                 <div th:if="${onProfile}">
-                    <a th:href="@{/profile}" class="friends-button accent-button">perfil</a>
+                    <a th:href="@{/profile}" class="friends-button accent-button">profile</a>
                 </div>
                 <div th:unless="${onProfile}">
-                    <a th:href="@{/profile}" class="friends-button primary-button">perfil</a>
+                    <a th:href="@{/profile}" class="friends-button primary-button">profile</a>
                 </div>
                 <form th:action="@{/logout}" method="post">
                     <button type="submit" value="Sign Out" class="logout-button primary-button">logout</button>
@@ -42,6 +42,174 @@
             </div>
         </div>
     </header>
+<!-- htmx fragments -->
+
+<!-- juegos más vendidos -->
+<div th:fragment="bestSellingGame" class="main-div" id="main-div">
+    <div class="content-navbar-div">
+        <nav class="content-navbar">
+            <a th:href="@{/index}" class="primary-button content-header-nav-btn">juegos más jugados</a>
+            <a hx:get="|/best-selling-games|" hx-swap="outerHTML" hx-target="closest #main-div" hx-select=".main-div"
+                class="accent-button content-header-nav-btn">juegos más vendidos</a>
+            <a hx:get="|/most-seen-news|" hx-swap="outerHTML" hx-target="closest #main-div" hx-select=".main-div"
+                class="primary-button content-header-nav-btn">noticias más populares</a>
+            <a hx:get="|/user-with-the-most-buys|" hx-swap="outerHTML" hx-target="closest #main-div"
+                hx-select=".main-div" class="primary-button content-header-nav-btn">usuario con más compras</a>
+            <a hx:get="|/user-with-the-most-game-time|" hx-swap="outerHTML" hx-target="closest #main-div"
+                hx-select=".main-div" class="primary-button content-header-nav-btn">usuario con más tiempo de juego</a>
+        </nav>
+    </div>
+    <div class="content-div">
+        <div class="header-title-div">
+            <div class="header-title">Juegos más Vendidos</div>
+        </div>
+        <div class="content">
+            <table class="content-stats-table">
+                <tr class="table-header">
+                    <th class="table-cell">Juego</th>
+                    <th class="table-cell">Ventas</th>
+                </tr>
+                <div th:each="stat : ${stats}">
+                    <tr class="table-content">
+                        <td th:text="${stat[0]}" class="table-cell">cell content</td>
+                        <td th:text="${stat[1]}" class="table-cell-center">cell content</td>
+                    </tr>
+                </div>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- noticias más populares -->
+<div th:fragment="mostSeenNews" class="main-div" id="main-div">
+    <div class="content-navbar-div">
+        <nav class="content-navbar">
+            <a th:href="@{/index}" class="primary-button content-header-nav-btn">juegos más jugados</a>
+            <a hx:get="|/best-selling-games|" hx-swap="outerHTML" hx-target="closest #main-div" hx-select=".main-div"
+                class="primary-button content-header-nav-btn">juegos más vendidos</a>
+            <a hx:get="|/most-seen-news|" hx-swap="outerHTML" hx-target="closest #main-div" hx-select=".main-div"
+                class="accent-button content-header-nav-btn">noticias más populares</a>
+            <a hx:get="|/user-with-the-most-buys|" hx-swap="outerHTML" hx-target="closest #main-div"
+                hx-select=".main-div" class="primary-button content-header-nav-btn">usuario con más compras</a>
+            <a hx:get="|/user-with-the-most-game-time|" hx-swap="outerHTML" hx-target="closest #main-div"
+                hx-select=".main-div" class="primary-button content-header-nav-btn">usuario con más tiempo de juego</a>
+        </nav>
+    </div>
+    <div class="content-div">
+        <div class="header-title-div">
+            <div class="header-title">Noticias más Populares</div>
+        </div>
+        <div class="content">
+            <table class="content-stats-table">
+                <tr class="table-header">
+                    <th class="table-cell">Noticia</th>
+                    <th class="table-cell">Vistas</th>
+                </tr>
+                <div th:each="stat : ${stats}">
+                    <tr class="table-content">
+                        <td th:text="${stat[0]}" class="table-cell">cell content</td>
+                        <td th:text="${stat[1]}" class="table-cell-center">cell content</td>
+                    </tr>
+                </div>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- usuario con más compras -->
+<div th:fragment="userWithTheMostBuys" class="main-div" id="main-div">
+    <div class="content-navbar-div">
+        <nav class="content-navbar">
+            <a th:href="@{/index}" class="primary-button content-header-nav-btn">juegos más jugados</a>
+            <a hx:get="|/best-selling-games|" hx-swap="outerHTML" hx-target="closest #main-div" hx-select=".main-div"
+                class="primary-button content-header-nav-btn">juegos más vendidos</a>
+            <a hx:get="|/most-seen-news|" hx-swap="outerHTML" hx-target="closest #main-div" hx-select=".main-div"
+                class="primary-button content-header-nav-btn">noticias más populares</a>
+            <a hx:get="|/user-with-the-most-buys|" hx-swap="outerHTML" hx-target="closest #main-div"
+                hx-select=".main-div" class="accent-button content-header-nav-btn">usuario con más compras</a>
+            <a hx:get="|/user-with-the-most-game-time|" hx-swap="outerHTML" hx-target="closest #main-div"
+                hx-select=".main-div" class="primary-button content-header-nav-btn">usuario con más tiempo de juego</a>
+        </nav>
+    </div>
+    <div class="content-div">
+        <div class="header-title-div">
+            <div class="header-title">Usuario con más compras</div>
+        </div>
+        <div class="content">
+            <table class="content-stats-table">
+                <tr class="table-header">
+                    <th class="table-cell">Usuario</th>
+                    <th class="table-cell">Compras</th>
+                </tr>
+                <div th:each="stat : ${stats}">
+                    <tr class="table-content">
+                        <td th:text="${stat[0]}" class="table-cell">cell content</td>
+                        <td th:text="${stat[1]}" class="table-cell-center">cell content</td>
+                    </tr>
+                </div>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 
+<!-- usuario con más tiempo de juego -->
+<div th:fragment="userWithTheMostGameTime" class="main-div" id="main-div">
+    <div class="content-navbar-div">
+        <nav class="content-navbar">
+            <a th:href="@{/index}" class="primary-button content-header-nav-btn">juegos más jugados</a>
+            <a hx:get="|/best-selling-games|" hx-swap="outerHTML" hx-target="closest #main-div" hx-select=".main-div"
+                class="primary-button content-header-nav-btn">juegos más vendidos</a>
+            <a hx:get="|/most-seen-news|" hx-swap="outerHTML" hx-target="closest #main-div" hx-select=".main-div"
+                class="primary-button content-header-nav-btn">noticias más populares</a>
+            <a hx:get="|/user-with-the-most-buys|" hx-swap="outerHTML" hx-target="closest #main-div"
+                hx-select=".main-div" class="primary-button content-header-nav-btn">usuario con más compras</a>
+            <a hx:get="|/user-with-the-most-game-time|" hx-swap="outerHTML" hx-target="closest #main-div"
+                hx-select=".main-div" class="accent-button content-header-nav-btn">usuario con más tiempo de juego</a>
+        </nav>
+    </div>
+    <div class="content-div">
+        <div class="header-title-div">
+            <div class="header-title">Usuario con más tiempo de juego</div>
+        </div>
+        <div class="content">
+            <table class="content-stats-table">
+                <tr class="table-header">
+                    <th class="table-cell">Usuario</th>
+                    <th class="table-cell">Tiempo de juego</th>
+                </tr>
+                <div th:each="stat : ${stats}">
+                    <tr class="table-content">
+                        <td th:text="${stat[0]}" class="table-cell">cell content</td>
+                        <td th:text="${stat[1]}" class="table-cell-center">cell content</td>
+                    </tr>
+                </div>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+<!-- comparar stats -->
+<div th:fragment="compare-stats" class="compare-table">
+    <div th:remove="!${message} ? all" class="prfl-message-div">
+        <p th:text="${message}" class="prfl-message">message text</p>
+    </div>
+    <div th:if="!${message}" class="content">
+        <table class="content-stats-table">
+            <tr class="table-header">
+                <th class="table-cell"></th>
+                <th th:text="${userName1}" class="table-cell">header</th>
+                <th th:text="${userName2}" class="table-cell">header</th>
+            </tr>
+            <div th:each="stat : ${stats}">
+                <tr class="table-content">
+                    <td th:text="${stat[0]}" class="table-cell">cell data</td>
+                    <td th:text="${stat[1]}" class="table-cell-center">cell data</td>
+                    <td th:text="${stat[2]}" class="table-cell-center">cell data</td>
+                </tr>
+            </div>
+        </table>
+    </div>
+</div>
 </html>

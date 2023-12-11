@@ -38,15 +38,7 @@ public class StatsService {
         return userAchvRepository.getUserWithTheMostAchvPoints();
     }
 
-    /**
-     * Obtiene una lista con los juegos mas populares ordenados de forma
-     * descendente.
-     * 
-     * @return Lista con resultado del Query realizado.
-     */
-    public List<String> getMostPopularGames() {
-        return gameRepository.getMostPopularGames();
-    }
+    
     
     
 }

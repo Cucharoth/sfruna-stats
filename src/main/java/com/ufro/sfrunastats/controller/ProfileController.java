@@ -9,6 +9,9 @@ import org.hibernate.query.sqm.IntervalType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ufro.sfrunastats.model.User;
 import com.ufro.sfrunastats.service.UserAchvService;
@@ -60,4 +63,33 @@ public class ProfileController {
         return stats;
     }
 
+    @GetMapping(path = "/profile/compare-stats")
+    public String compareStats(Model model, Principal principal) {
+        if (principal != null) {
+            User user = userService.findByUsername(principal.getName());
+            model.addAttribute("user", user);
+            model.addAttribute("onProfile", true);
+        }
+        return "compare-stats";
+    }
+
+    @PostMapping(path = "/profile/compare-stats/search")
+    public String compareStatsSearch(@RequestParam("keyword") String newUserName,
+            Model model, Principal principal) {
+        if (principal != null) {
+            User newUser = userService.findByUsername(newUserName);
+            User user = userService.findByUsername(principal.getName());
+            if (newUser != null && !newUser.equals(user)) {
+                List<List<String>> stats = userService.comparaStats(user.getId(), newUser.getId());
+                model.addAttribute("userName1", stats.get(0).get(0));
+                model.addAttribute("userName2", stats.get(0).get(1));
+                stats.remove(0);
+                model.addAttribute("stats", stats);
+            } else {
+                model.addAttribute("message", "¡Usuario no encontrado!");
+            }
+        }
+
+        return "fragments/stats.html :: compare-stats";
+    }
 }

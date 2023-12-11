@@ -1,5 +1,7 @@
 package com.ufro.sfrunastats.repository;
 
+import java.util.List;
+
 import org.hibernate.query.sqm.IntervalType;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -16,5 +18,21 @@ public interface UserPlaysGameRepository extends CrudRepository<User, Integer>{
             "WHERE usuario_id = ?1\r\n" + //
             "GROUP BY nombre_usuario;", nativeQuery = true)
     String getTotalGameTimeByUserId(int userId);
+
+    @Query(value = "SELECT nombre_juego, SUM(tiempo_jugado) AS tiempo_jugado\r\n" + //
+            "FROM stats.usuario_juega_juego\r\n" + //
+            "JOIN stats.juego USING (juego_id)\r\n" + //
+            "GROUP BY nombre_juego\r\n" + //
+            "ORDER BY tiempo_jugado DESC\r\n" + //
+            "LIMIT 5;", nativeQuery = true)
+    List<String> getMostPlayedGames();
+
+    @Query(value = "SELECT nombre_usuario, SUM(tiempo_jugado) AS tiempo_jugado\r\n" + //
+                    "FROM stats.usuario_juega_juego\r\n" + //
+                    "JOIN stats.usuario USING (usuario_id)\r\n" + //
+                    "GROUP BY nombre_usuario\r\n" + //
+                    "ORDER BY tiempo_jugado DESC\r\n" + //
+                    "LIMIT 5;", nativeQuery = true)
+    List<String> getUserWithTheMostGameTime();
     
 }

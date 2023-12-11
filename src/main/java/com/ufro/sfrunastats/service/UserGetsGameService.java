@@ -1,5 +1,6 @@
 package com.ufro.sfrunastats.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -47,8 +48,16 @@ public class UserGetsGameService {
      * @return Lista con los resultados del Query realizado.
      * 
      */
-    public List<String> getBestSellingGame() {
-        return userGetsGameRepository.getBestSellingGame();
+    public List<List<String>> getBestSellingGame() {
+        List<List<String>> result = new ArrayList<>();
+        List<String> bestSellingGames = userGetsGameRepository.getBestSellingGame();
+        if (bestSellingGames != null) {
+            for (String row : bestSellingGames) {
+                String[] splitArr = row.split(",", 2);
+                result.add(List.of(splitArr[0], splitArr[1]));
+            }
+        }
+        return result;
     }
 
     /**
@@ -74,7 +83,15 @@ public class UserGetsGameService {
         return userGetsGameRepository.getCantidadBuysByUserId(userId);
     }
 
-    public List<String> getUserWithTheMostBuys() {
-        return userGetsGameRepository.getUserWithTheMostBuys();
+    public List<List<String>> getUserWithTheMostBuys() {
+        List<List<String>> result = new ArrayList<>();
+        List<String> userWithTheMostBuys = userGetsGameRepository.getUserWithTheMostBuys();
+        if (userWithTheMostBuys != null) {
+            for (String row : userWithTheMostBuys) {
+                String[] splitArr = row.split(",", 2);
+                result.add(List.of(splitArr[0], splitArr[1]));
+            }
+        }
+        return result;
     }
 }

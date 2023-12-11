@@ -38,22 +38,30 @@ public class StatsController {
 
         // system:
         // System.out.println(statsService.getUserWithTheMostAchvPoints());
-        
-        // todo: TEST THIS!
-        // gameService.guardarTiempoInicioJuego(0, 0);
-        // gameService.guardTiempoJugado();
-        
-        // System.out.println(statsService.getMostPopularGames());
 
-        // TODO: TEST THIS!
-        // System.out.println(userGetsGame.registrarAdquisicionJuego(0, 0));
+        // System.out.println(statsService.getMostPlayedGames());
 
         // System.out.println(userGetsGame.getBestSellingGame());
         // System.out.println(userGetsGame.getBestSellingGameThisMonth());
 
+        // System.out.println(userGetsGame.getUserWithTheMostBuys());
+
+        // System.out.println(userNewsService.getNoticiasMasPopulares().toString());
+        // System.out.println(userNewsService.getNoticiasMasPopularesThisMonth().toString());
+
+
+
+        // todo: TEST THIS!
+        // gameService.guardarTiempoInicioJuego(0, 0);
+        // gameService.guardTiempoJugado();
+        
+
+
+        // TODO: TEST THIS!
+        // System.out.println(userGetsGame.registrarAdquisicionJuego(0, 0));
+
         // System.out.println(userGetsGame.getCantidadJuegosByUserId(1));
 
-        // System.out.println(userGetsGame.getUserWithTheMostBuys());
 
         // TODO: TEST THIS!
         // userNewsService.registrarUsuarioLeeNoticia(user, 1);
@@ -61,10 +69,6 @@ public class StatsController {
         // System.out.println(userNewsService.getCantidadVistasNoticia(1));
 
         // System.out.println(userNewsService.getCantidadVistasUsuario(user.getId()));
-
-        // System.out.println(userNewsService.getNoticiasMasPopulares().toString());
-
-        // System.out.println(userNewsService.getNoticiasMasPopularesThisMonth().toString());
 
         // System.out.println(userService.comparaStats(user.getId(), 2).toString());
 

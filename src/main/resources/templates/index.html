@@ -15,6 +15,9 @@
     <link rel="stylesheet" th:href="@{/css/stats.css}">
     <link rel="stylesheet" th:href="@{/css/header-stats.css}">
     <link rel="stylesheet" th:href="@{/css/body-stats.css}">
+    <script src="https://unpkg.com/htmx.org@1.9.6"
+        integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
+        crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -22,34 +25,37 @@
     <header th:replace="~{fragments/stats.html :: header}"></header>
     
     <main class="main">
-        <div class="main-div">
+        <div class="main-div" id="main-div">
             <div class="content-navbar-div">
                 <nav class="content-navbar">
-                    <button class="primary-button content-header-nav-btn">juegos mas jugados</button>
-                    <button class="primary-button content-header-nav-btn">usuarios con mas juegos</button>
+                    <!-- hx-trigger por default para button es Onclick -->
+                    <a th:href="@{/index}" class="accent-button content-header-nav-btn">juegos más jugados</a>
+                    <a hx:get="|/best-selling-games|" hx-swap="outerHTML" hx-target="closest #main-div" hx-select=".main-div"
+                        class="primary-button content-header-nav-btn">juegos más vendidos</a>
+                    <a hx:get="|/most-seen-news|" hx-swap="outerHTML" hx-target="closest #main-div" hx-select=".main-div"
+                        class="primary-button content-header-nav-btn">noticias más populares</a>
+                    <a hx:get="|/user-with-the-most-buys|" hx-swap="outerHTML" hx-target="closest #main-div" hx-select=".main-div"
+                        class="primary-button content-header-nav-btn">usuario con más compras</a>
+                    <a hx:get="|/user-with-the-most-game-time|" hx-swap="outerHTML" hx-target="closest #main-div" hx-select=".main-div"
+                        class="primary-button content-header-nav-btn">usuario con más tiempo de juego</a>
                 </nav>
             </div>
             <div class="content-div">
                 <div class="header-title-div">
-                    <div class="header-title">header title</div>
+                    <div class="header-title">Juegos más jugados</div>
                 </div>
                 <div class="content">
                     <table class="content-stats-table">
                         <tr class="table-header">
-                            <th class="table-cell">Company</th>
-                            <th class="table-cell">Contact</th>
-                            <th class="table-cell">Country</th>
+                            <th class="table-cell">Juego</th>
+                            <th class="table-cell">Tiempo Jugado</th>
                         </tr>
-                        <tr class="table-content">
-                            <td class="table-cell">Alfreds Futterkiste</td>
-                            <td class="table-cell">Maria Anders</td>
-                            <td class="table-cell">Germany</td>
-                        </tr>
-                        <tr class="table-content">
-                            <td class="table-cell">Centro comercial Moctezuma</td>
-                            <td class="table-cell">Francisco Chang</td>
-                            <td class="table-cell">Mexico</td>
-                        </tr>
+                        <div th:each="stat : ${stats}">
+                            <tr class="table-content">
+                                <td th:text="${stat[0]}" class="table-cell">cell content</td>
+                                <td th:text="${stat[1]}" class="table-cell">cell content</td>
+                                </tr>
+                        </div>
                     </table>
                 </div>
             </div>

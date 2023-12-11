@@ -1,5 +1,6 @@
 package com.ufro.sfrunastats.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -71,8 +72,16 @@ public class UserNewsService {
      * @return Lista con el resultado del Query realizado.
      * 
      */
-    public List<String> getNoticiasMasPopulares() {
-        return userNewsRepository.getNoticiasMasPopulares();
+    public List<List<String>> getNoticiasMasPopulares() {
+        List<List<String>> result = new ArrayList<>();
+        List<String> mostSeenNews = userNewsRepository.getNoticiasMasPopulares();
+        if (mostSeenNews != null) {
+            for (String row : mostSeenNews) {
+                String[] splitArr = row.split(",", 2);
+                result.add(List.of(splitArr[0], splitArr[1]));
+            }
+        }
+        return result;
     }
 
     /**

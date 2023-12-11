@@ -28,13 +28,6 @@ public interface GameRepository extends CrudRepository<Game, Integer> {
                         "WHERE usuario_id = ?2 AND juego_id = ?1;", nativeQuery = true)
         void guardarTiempoJugado(int gameId, int userId);
 
-        @Query(value = "SELECT nombre_juego, COUNT(*) as play_count\r\n" + //
-                        "FROM stats.\"usuario_juega_juego\"\r\n" + //
-                        "JOIN stats.\"juego\" USING (juego_id)\r\n" + //
-                        "GROUP BY nombre_juego\r\n" + //
-                        "ORDER BY play_count DESC\r\n" + //
-                        "LIMIT 5\r\n" + //
-                        "", nativeQuery = true)
-        List<String> getMostPopularGames();
+        
 
 }
