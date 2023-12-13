@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.ufro.sfrunastats.model.Achievement;
+import com.ufro.sfrunastats.model.UserAchv;
 import com.ufro.sfrunastats.repository.GameRepository;
 import com.ufro.sfrunastats.repository.UserAchvRepository;
 
@@ -31,5 +33,9 @@ public class UserAchvService {
 
     public List<String> getUserWithTheMostAchvPoints(){
         return userAchvRepository.getUserWithTheMostAchvPoints();
+    }
+
+    public List<UserAchv> findAllByUserId(int userId) {
+        return userAchvRepository.findAllByUserId(userId);
     }
 }

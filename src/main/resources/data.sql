@@ -23,12 +23,12 @@ ON CONFLICT DO NOTHING;
 
 INSERT INTO stats.logro (logro_id, nombre_logro, descripcion, juego_id, puntos_logro)
 VALUES
-(8,	'mi-logro',	'este es mi logro',	1,	10),
-(9,	'otro logro',	'este es otro logro',	1,	50),
-(19,	'mi-logro',	'este es mi logro',	1,	10),
-(20,	'mi-logro',	'este es mi logro',	1,	10),
-(21,	'mi-logro',	'este es mi logro',	1,	10),
-(22,	'mi-logro',	'este es mi logro',	1,	10)
+(8,	    '¡Login!',	    'Ingresa por primera vez',	    1,	10),
+(9,	    '¡Compra Juego!',	'Compra tu primer juego',	        1,	50),
+(19,	'¡Lee Noticia!',  'Lee tu primer noticia',	            1,	10),
+(20,	'¡Juega Juego!',	    'Juega tu primer Juego',	    1,	10),
+(21,	'mi-logro',	    'este es mi logro',	            1,	10),
+(22,	'mi-logro',	    'este es mi logro',	            1,	10)
 ON CONFLICT DO NOTHING;
 
 INSERT INTO stats.noticia (noticia_id, titulo_noticia, content_noticia)
@@ -55,12 +55,14 @@ ON CONFLICT DO NOTHING;
 INSERT INTO stats.usuario_has_logro (logro_id, usuario_id, completado, fecha_completado)
 VALUES
 (9,	1,	't',	'2023-10-30 01:59:30.178732'),
-(20,1,	't',	'2023-11-04 05:06:09'),
+(8,1,	't',	'2023-11-04 05:06:09'),
 (8,	2,	't',	'2023-11-04 05:05:54'),
 (22,3,'t','2023-12-11 05:05:54'),
 (21,3,'t','2023-11-07 05:05:54'),
 (9,4,'t','2023-11-07 05:05:54'),
-(21,5,'t','2023-11-07 05:05:54')
+(21,5,'t','2023-11-07 05:05:54'),
+(19, 1, 't', '2023-12-13 05:05:54'),
+(20, 1, 't', '2023-12-05 05:05:54')
 ON CONFLICT DO NOTHING;
 
 INSERT INTO stats.usuario_juega_juego (usuario_id, juego_id, tiempo_inicio, tiempo_jugado)

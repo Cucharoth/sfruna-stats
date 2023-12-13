@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.ufro.sfrunastats.model.Achievement;
 import com.ufro.sfrunastats.model.User;
 import com.ufro.sfrunastats.model.UserAchv;
 
@@ -31,4 +32,6 @@ public interface UserAchvRepository extends CrudRepository<UserAchv, Integer> {
                         "ORDER BY puntos_logro DESC\r\n" + //
                         "LIMIT 5;", nativeQuery = true)
         List<String> getUserWithTheMostAchvPoints();
+
+        List<UserAchv> findAllByUserId(int userId);
 }

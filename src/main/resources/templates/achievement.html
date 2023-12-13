@@ -40,26 +40,30 @@
                     <a th:href="@{/profile}" class="accent-button content-header-nav-btn">stats</a>
                     <a th:href="@{/profile/achievement}" class="primary-button content-header-nav-btn">achievement</a>
                     <a class="primary-button content-header-nav-btn">configuration</a>
-                    <a th:href="@{/profile/compare-stats}" class="primary-button content-header-nav-btn">compare stats</a>
+                    <a th:href="@{/profile/compare-stats}" class="primary-button content-header-nav-btn">compare
+                        stats</a>
                 </nav>
             </div>
             <div class="content-div">
                 <div class="header-title-div">
-                    <div class="header-title">Personal Stats</div>
+                    <div class="header-title">Logros</div>
                 </div>
-                <div class="content">
-                    <table class="content-stats-table">
-                        <tr class="table-header">
-                            <th class="table-cell">Category</th>
-                            <th class="table-cell">Stat</th>
-                        </tr>
-                        <div th:each="stat : ${stats}">
-                            <tr class="table-content">
-                                <td th:text="${stat[0]}" class="table-cell">cell data</td>
-                                <td th:text="${stat[1]}" class="table-cell-center">cell data</td>
-                            </tr>
+                <div th:remove="!${message} ? all" class="prfl-message-div">
+                    <div th:text="${message}" class="prfl-message">message</div>
+                </div>
+                <div th:unless="${message}" class="content">
+                    <div class="content-logros-div">
+                        <div th:each="achiv : ${achivs}" class="logros-div">
+                            <div class="logro">
+                                <div class="info-logro-div">
+                                    <div th:text="${achiv.achv.name}" class="info-logro">achivname</div>
+                                </div>
+                                <div class="puntos-logro-div">
+                                    <div th:text="${achiv.achv.achivPoints}" class="puntos-logro">10</div>
+                                </div>
+                            </div>
                         </div>
-                    </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ufro.sfrunastats.model.Achievement;
 import com.ufro.sfrunastats.model.User;
+import com.ufro.sfrunastats.model.UserAchv;
 import com.ufro.sfrunastats.service.UserAchvService;
 import com.ufro.sfrunastats.service.UserGetsGameService;
 import com.ufro.sfrunastats.service.UserNewsService;
@@ -89,7 +91,23 @@ public class ProfileController {
                 model.addAttribute("message", "¡Usuario no encontrado!");
             }
         }
-
         return "fragments/stats.html :: compare-stats";
     }
+
+    @GetMapping(path = "/profile/achievement")
+    public String achievement(Model model, Principal principal) {
+        if (principal != null) {
+            User user = userService.findByUsername(principal.getName());
+            model.addAttribute("user", user);
+            model.addAttribute("onProfile", true);
+            List<UserAchv> userAchv = userAchvService.findAllByUserId(user.getId());
+            if (userAchv != null) {
+                model.addAttribute("achivs", userAchv);
+            } else {
+                model.addAttribute("message", "¡Aún no posees ningún logro! :[");
+            }
+        }
+        return "achievement";
+    }
+
 }
