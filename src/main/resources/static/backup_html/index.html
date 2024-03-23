@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:hx="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sFruna</title>
+    <!-- 2023 - Cucharoth | Prog. Avanzada - sFruna Stats -->
+    <link rel="shortcut icon" type="image/png" th:href="@{/favicon.ico}">
+    <link rel="stylesheet" href="/src/main/resources/static/css/stats.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/header-stats.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/body-stats.css">
+    <link rel="stylesheet" th:href="@{/css/stats.css}">
+    <link rel="stylesheet" th:href="@{/css/header-stats.css}">
+    <link rel="stylesheet" th:href="@{/css/body-stats.css}">
+
+</head>
+<body>
+    <!-- header -->
+    <header th:replace="~{fragments/stats.html :: header}"></header>
+    
+    <main class="main">
+        <div class="main-div">
+            <div class="content-navbar-div">
+                <nav class="content-navbar">
+                    <button class="primary-button content-header-nav-btn">juegos mas jugados</button>
+                    <button class="primary-button content-header-nav-btn">usuarios con mas juegos</button>
+                </nav>
+            </div>
+            <div class="content-div">
+                <div class="header-title-div">
+                    <div class="header-title">header title</div>
+                </div>
+                <div class="content">
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

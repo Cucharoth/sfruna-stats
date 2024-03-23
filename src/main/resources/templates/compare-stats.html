@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:hx="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sFruna | Profile</title>
+    <!-- 2023 - Cucharoth | Prog. Avanzada - sFruna Stats -->
+    <link rel="shortcut icon" type="image/png" th:href="@{/favicon.ico}">
+    <link rel="stylesheet" href="/src/main/resources/static/css/stats.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/header-stats.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/body-stats.css">
+    <link rel="stylesheet" th:href="@{/css/stats.css}">
+    <link rel="stylesheet" th:href="@{/css/header-stats.css}">
+    <link rel="stylesheet" th:href="@{/css/body-stats.css}">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://unpkg.com/htmx.org@1.9.6"
+        integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- header -->
+    <header th:replace="~{fragments/stats.html :: header}"></header>
+
+    <main class="main">
+        <div class="main-div">
+            <div class="profile-user-div">
+                <div class="profile-img-div">
+                    <img th:src="@{${user.profileImg.link}}" alt="prfl-img" class="profile-user-img">
+                </div>
+                <div class="profile-info">
+                    <div th:text="${user.username}" class="profile-info-username">
+                        username
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-navbar-div">
+                <nav class="content-navbar">
+                    <a th:href="@{/profile}" class="primary-button content-header-nav-btn">stats</a>
+                    <a th:href="@{/profile/achievement}" class="primary-button content-header-nav-btn">achievement</a>
+                    <a class="primary-button content-header-nav-btn">configuration</a>
+                    <a th:href="@{/profile/compare-stats}" class="accent-button content-header-nav-btn">compare
+                        stats</a>
+                </nav>
+            </div>
+            <div class="content-div">
+                <div class="header-title-div">
+                    <div class="header-title">Comparar Stats</div>
+                </div>
+                <div class="content-search-bar-div">
+                    <form hx:post="|/profile/compare-stats/search|" hx-target=".compare-table" hx-swap="outerHTML"
+                        class="content-search-bar" method="post">
+                        <input class="input-search-bar" type="search" size="20" name="keyword" maxlength="20"
+                            placeholder="Nombre de Usuario" aria-label="Search" required>
+                        <button class="search-button" type="submit">
+                            <span class="material-symbols-outlined search-icon">
+                                search
+                            </span>
+                        </button>
+                    </form>
+                </div>
+                <div class="compare-table">
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

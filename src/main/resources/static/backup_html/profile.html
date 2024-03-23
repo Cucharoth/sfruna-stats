@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:hx="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sFruna | Profile</title>
+    <!-- 2023 - Cucharoth | Prog. Avanzada - sFruna Stats -->
+    <link rel="shortcut icon" type="image/png" th:href="@{/favicon.ico}">
+    <link rel="stylesheet" href="/src/main/resources/static/css/stats.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/header-stats.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/body-stats.css">
+    <link rel="stylesheet" th:href="@{/css/stats.css}">
+    <link rel="stylesheet" th:href="@{/css/header-stats.css}">
+    <link rel="stylesheet" th:href="@{/css/body-stats.css}">
+
+</head>
+
+<body>
+    <!-- header -->
+    <header th:replace="~{fragments/stats.html :: header}"></header>
+
+    <main class="main">
+        <div class="main-div">
+            <div class="profile-user-div">
+                <div class="profile-img-div">
+                    <img th:src="@{${user.profileImg.link}}" alt="prfl-img" class="profile-user-img">
+                </div>
+                <div class="profile-info">
+                    <div th:text="${user.username}" class="profile-info-username">
+                        username
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-navbar-div">
+                <nav class="content-navbar">
+                    <button class="accent-button content-header-nav-btn">stats</button>
+                    <button class="primary-button content-header-nav-btn">achievement</button>
+                    <button class="primary-button content-header-nav-btn">configuration</button>
+                </nav>
+            </div>
+            <div class="content-div">
+                <div class="header-title-div">
+                    <div class="header-title">header title</div>
+                </div>
+                <div class="content">
+                    <table class="content-stats-table">
+                        <tr class="table-header">
+                            <th class="table-cell">Company</th>
+                            <th class="table-cell">Contact</th>
+                        </tr>
+                        <div>
+                            <tr class="table-content">
+                                <td class="table-cell">Alfreds Futterkiste</td>
+                                <td class="table-cell">Maria Anders</td>
+                            </tr>
+                            <tr class="table-content">
+                                <td class="table-cell">Centro comercial Moctezuma</td>
+                                <td class="table-cell">Francisco Chang</td>
+                            </tr>
+                        </div>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

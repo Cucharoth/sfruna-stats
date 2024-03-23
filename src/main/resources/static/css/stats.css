@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+
+:root {
+    --bg-color: #161216;
+    --primary-color: #74586C;
+    --secondary-color: #2A2226;
+    --text-color: #d6d6d6;
+    --back-text-color: #212529;
+    --accent-color: #AC396D;
+    --third-color: #3D2932;
+    --alert-color: #D23C3C;
+    --primary-font: 'Nova Square', sans-serif;
+}
+
+header {
+    display: flex;
+    height: 8%;
+    background-color: var(--third-color);
+    min-height: 60px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 250px;
+}
+
+body,
+html {
+    display: block;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100%;
+    background-color: var(--bg-color) !important;
+    min-height: 850px;
+}
+
+main {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    padding: 0 250px;
+    height: 89.8%;
+}
+.primary-button {
+    box-sizing: border-box;
+    display: flex;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    margin: 10px 5px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    border-style: none;
+    font-size: 18px;
+    font-family: var(--primary-font);
+    font-weight: 500px;
+    justify-content: center;
+    cursor: pointer;
+    align-items: center;
+    transition: color 0.3s, background-color 0.3s, font-weight 0.1s;
+}
+
+.primary-button:hover {
+    background-color: var(--accent-color);
+    color: var(--back-text-color);
+    font-weight: 600;
+}
+    
+a {
+    text-decoration: none;
+}
+    
+.accent-button {
+    box-sizing: border-box;
+    display: flex;
+    color: var(--back-text-color);
+    background-color: var(--accent-color);
+    margin: 10px 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border-style: none;
+    font-size: 18px;
+    font-family: var(--primary-font);
+    font-weight: 600;
+    transition: color 0.3s, background-color 0.3s, opacity 0.3s, font-weight 0.1s;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+    
+.accent-button:hover {
+    color: var(--text-color);
+    opacity: 80%;
+    font-weight: 500;
+}
